@@ -1,0 +1,57 @@
+[
+    {
+      "title": "Waffle with Berries",
+      "category": "Waffle",
+      "price": 6.5,
+      "image": "assets/images/image-waffle-desktop.jpg"
+    },
+    {
+      "title": "Vanilla Bean Crème Brûlée",
+      "category": "Crème Brûlée",
+      "price": 7.0,
+      "image": "assets/images/image-creme-brulee-desktop.jpg"
+    },
+    {
+      "title": "Macaron Mix of Five",
+      "category": "Macaron",
+      "price": 8.0,
+      "image": "assets/images/image-macaron-desktop.jpg"
+    },
+    {
+      "title": "Classic Tiramisu",
+      "category": "Tiramisu",
+      "price": 5.5,
+      "image": "assets/images/image-tiramisu-desktop.jpg"
+    },
+    {
+      "title": "Pistachio Baklava",
+      "category": "Baklava",
+      "price": 4.0,
+      "image": "assets/images/image-baklava-desktop.jpg"
+    },
+    {
+      "title": "Lemon Meringue Pie",
+      "category": "Pie",
+      "price": 5.0,
+      "image": "assets/images/image-meringue-desktop.jpg"
+    },
+    {
+      "title": "Red Velvet Cake",
+      "category": "Cake",
+      "price": 5.0,
+      "image": "assets/images/image-cake-desktop.jpg"
+    },
+    {
+      "title": "Chocolate Cake",
+      "category": "Chocolate",
+      "price": 5.5,
+      "image": "assets/images/image-brownie-desktop.jpg"
+    },
+    {
+      "title": "Vanilla Panna Cotta",
+      "category": "Panna Cotta",
+      "price": 6.5,
+      "image": "assets/images/image-panna-cotta-desktop.jpg"
+    }
+  ]
+  
