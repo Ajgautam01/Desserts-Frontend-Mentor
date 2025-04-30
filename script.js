@@ -22,13 +22,24 @@ document.addEventListener('DOMContentLoaded', function() {
   addButtons.forEach(button => {
     button.addEventListener('click', function () {
       const item = this.closest('.item');
+      const image = item.querySelector('img');
+  
+      // ✅ Clear all previous highlights
+      document.querySelectorAll('.item img').forEach(img => img.classList.remove('highlighted'));
+      document.querySelectorAll('.add-btn').forEach(btn => btn.classList.remove('highlighted'));
+  
+      // ✅ Add highlight to the selected image and button
+      image.classList.add('highlighted');
+      this.classList.add('highlighted');
+  
+      // ✅ Cart logic
       const itemName = item.querySelector('h4').textContent.trim();
       const itemPriceText = item.querySelector('p').textContent.trim();
       const itemPrice = parseFloat(itemPriceText.replace('$', ''));
-      const itemImage = item.querySelector('img').getAttribute('src');
-
+      const itemImage = image.getAttribute('src');
+  
       const existingItem = cartItems.find(i => i.name === itemName);
-
+  
       if (existingItem) {
         existingItem.quantity += 1;
         existingItem.totalPrice = existingItem.quantity * itemPrice;
@@ -41,11 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
           image: itemImage
         });
       }
-
+  
       total = cartItems.reduce((sum, i) => sum + i.totalPrice, 0);
       updateCart();
     });
   });
+  
 
   function updateCart() {
     cartItemsContainer.innerHTML = '';
