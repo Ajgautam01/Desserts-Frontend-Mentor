@@ -19,33 +19,28 @@ body {
   gap: 20px;
 }
 
-/* Item container - prevents highlight overflow */
 .item {
-  overflow: hidden;         /* Ensures borders don’t overflow */
-  border-radius: 12px;      /* Rounded corners for visual balance */
-  padding: 4px;             /* Gives room for border inside */
-  /* background-color: white;  Optional: makes highlight cleaner */
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 4px;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-/* Image highlight */
 .item img {
   width: 100%;
-  height: 150px;
+  height: 220px;
   object-fit: cover;
   border: 2px solid transparent;
-  box-sizing: border-box; /* Ensures border stays within dimensions */
+  box-sizing: border-box;
 }
 
 .item img.highlighted {
   border: 3px solid #d64500;
   box-shadow: inset 0 0 0 1px #d64500;
   border-radius: 10px;
-  box-sizing: border-box; /* Important: Keeps border inside */
+  box-sizing: border-box;
   display: block;
 }
-
 
 .add-btn.highlighted {
   background-color: #d64500 !important;
@@ -54,7 +49,6 @@ body {
   transform: scale(1.05);
   z-index: 1;
 }
-
 
 .category-title {
   font-size: 15px;
@@ -66,15 +60,12 @@ body {
   justify-content: flex-start;
 }
 
- /* Button container */
 .btn-con {
   display: flex;
   justify-content: center;
   margin-top: -25px;
-  /* margin: 10px 0; */
 }
 
-/* Add to Cart button */
 .add-btn {
   display: flex;
   align-items: center;
@@ -89,50 +80,65 @@ body {
   transition: all 0.3s ease;
 }
 
-
-
 .add-btn:hover {
   background-color: #d64500;
   color: #fff;
   border-color: #d64500;
 }
 
-/* Add these styles to your existing CSS */
-
-.quantity-controls {
+.btn-con .quantity-controls {
+  background-color: #d64500;
+  color: white;
+  border-radius: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
+  padding: 6px 14px;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.quantity-btn {
-  width: 25px;
-  height: 25px;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 14px;
+.btn-con .quantity-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  border-radius: 50%;
 }
 
-.quantity-btn:hover {
-  background: #d64500;
-  color: white;
-  border-color: #d64500;
+.btn-con .quantity-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.quantity {
-  min-width: 20px;
-  text-align: center;
+.cart {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  font-family: sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 450px;
+  margin-top: 70px;
+  height: 20%;
+}
+
+.cart h3 {
+  color: #d64500;
+  margin-bottom: 15px;
 }
 
 .cart-item {
   display: flex;
-  align-items: center; /* Vertically align items in the container */
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
   padding: 8px;
@@ -140,22 +146,22 @@ body {
 }
 
 .item-info {
-  display: flex; /* Make item info a flex container */
-  align-items: center; /* Vertically align image and text */
-  flex-grow: 1; /* Allow text to take up available space */
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
   margin-right: 10px;
 }
 
 .item-info img {
-  width: 50px; /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
+  width: 50px;
+  height: 50px;
   object-fit: cover;
-  margin-right: 10px; /* Space between image and text */
-  border-radius: 5px; /* Optional: round the corners of the image */
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
 .item-details {
-  flex-grow: 1; /* Allow details to take up remaining space */
+  flex-grow: 1;
 }
 
 .item-details p {
@@ -180,57 +186,10 @@ body {
   text-align: right;
 }
 
-
-/* Cart icon inside button */
 .add-btn .cart-cons {
   height: 15px;
   width: 15px;
   margin-bottom: -1px;
-}
-
-/* Cart Section */
-.cart {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  width: 300px;
-  font-family: sans-serif;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-right: 450px;
-  margin-top: 70px;
-  height: 20%;
-}
-
-.cart h3 {
-  color: #d64500;
-  margin-bottom: 15px;
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.cart-item p {
-  margin: 0;
-  font-weight: 600;
-}
-
-.cart-item small {
-  color: #666;
-  font-size: 12px;
-}
-
-.cart-count {
-  justify-content: flex-start;
-  top: 10px;
-  right: 10px;
-  background: #d64500;
-  color: white;
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 14px;
 }
 
 .confirm-btn {
@@ -285,8 +244,6 @@ h2 {
   color: #d64500;
 }
 
-
-
 .total {
   display: flex;
   justify-content: space-between;
@@ -295,21 +252,17 @@ h2 {
   font-size: 16px;
 }
 
-/* Responsive Mobile Styles */
 @media (max-width: 768px) {
   body {
-    width: 100%; /* Take full width on mobile */
+    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;      /* Center horizontally */
-    justify-content: center;  /* Center vertically */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 10px;
   }
-
-
-  
 
   .menu {
     margin: 0 auto;
@@ -321,21 +274,19 @@ h2 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
-     /* Ensure centered layout */
     width: 320%;
     margin-left: -160px;
-
   }
 
   .item img {
-    height: 180px;
+    height: 220px;
     width: 100%;
     object-fit: cover;
   }
 
   .btn-con {
     position: relative;
-    top: -1px; /* Adjusted to make the button move higher */
+    top: -1px;
     align-self: center;
     left: 0;
   }
@@ -348,8 +299,6 @@ h2 {
     border: 1px solid #eee;
   }
 
-
-
   .total {
     flex-direction: column;
     align-items: flex-start;
@@ -360,6 +309,4 @@ h2 {
     font-size: 14px;
     padding: 10px;
   }
-
-  
 }
