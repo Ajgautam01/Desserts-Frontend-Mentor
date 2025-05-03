@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
+ 
   <div class="menu">
     <h2>Desserts</h2>
     <div class="items">
@@ -243,6 +243,28 @@
     <small>This is a <b>carbon-neutral</b> delivery</small>
   </div>
   <button class="confirm-btn">Confirm Order</button>
+</div>
+
+
+<!-- Order Confirmation Modal -->
+<div class="confirmation-modal hidden">
+  <div class="confirmation-content">
+    <div class="confirmation-header">
+      <h1>Order Confirmed</h1>
+      <p>We hope you enjoy your food</p>
+    </div>
+    <div class="confirmation-body">
+      <h3>Your Order</h3>
+      <div id="confirmation-items"></div>
+      <div class="order-total-section">
+        <h3>Order Total</h3>
+        <strong id="confirmation-total">$0.00</strong>
+      </div>
+    </div>
+    <div class="confirmation-footer">
+      <button class="new-order-btn">Start New Order</button>
+    </div>
+  </div>
 </div>
 
 
