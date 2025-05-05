@@ -1,64 +1,63 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const cart = {
     items: [],
     total: 0
   };
 
+  // DOM Elements
   const confirmationModal = document.querySelector('.confirmation-modal');
-  const closeConfirmation = document.querySelector('.close-confirmation');
   const newOrderBtn = document.querySelector('.new-order-btn');
   const confirmationItems = document.getElementById('confirmation-items');
   const confirmationTotal = document.getElementById('confirmation-total');
+  const confirmBtn = document.querySelector('.confirm-btn');
+  
+  // Track current editing item
+  let currentEditingItem = null;
 
   // 1. Handle "Add to Cart" button
   document.querySelectorAll('.add-btn').forEach(button => {
-    button.addEventListener('click', function (e) {
+    button.addEventListener('click', function(e) {
       e.stopPropagation();
       const item = this.closest('.item');
+      currentEditingItem = item;
+      
+      // Show quantity controls
       this.classList.add('hidden');
       item.querySelector('.pre-cart-controls').classList.remove('hidden');
       item.querySelector('img').classList.add('active');
     });
   });
 
-  // 2. Quantity adjustment logic
+  // 2. Handle quantity adjustments
   document.querySelectorAll('.quantity-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       const controls = this.closest('.pre-cart-controls');
       const quantityEl = controls.querySelector('.quantity');
       let quantity = parseInt(quantityEl.textContent);
 
       if (this.classList.contains('decrease')) {
         quantity = Math.max(1, quantity - 1);
-      } else if (this.classList.contains('increase')) {
+      } else {
         quantity++;
       }
-
       quantityEl.textContent = quantity;
-
-      const item = this.closest('.item');
-      const itemName = item.querySelector('h4').textContent;
-      const existingItem = cart.items.find(item => item.name === itemName);
-
-      if (existingItem) {
-        existingItem.quantity = quantity;
-        existingItem.total = existingItem.price * quantity;
-        updateCart();
-      }
     });
   });
 
   // 3. Add item to cart when clicking outside
-  document.addEventListener('click', function (e) {
-    const activeControls = document.querySelector('.pre-cart-controls:not(.hidden)');
-    if (activeControls && !e.target.closest('.pre-cart-controls') && !e.target.classList.contains('add-btn')) {
-      const item = activeControls.closest('.item');
-      addItemToCart(item);
-      resetControls(item);
+  document.addEventListener('click', function(e) {
+    if (!currentEditingItem) return;
+    
+    const controls = currentEditingItem.querySelector('.pre-cart-controls');
+    if (!e.target.closest('.pre-cart-controls') && !e.target.classList.contains('add-btn')) {
+      addItemToCart(currentEditingItem);
+      resetControls(currentEditingItem);
+      currentEditingItem = null;
     }
   });
 
-  // Reset UI controls after adding to cart
+  // Helper functions
   function resetControls(item) {
     const controls = item.querySelector('.pre-cart-controls');
     controls.classList.add('hidden');
@@ -67,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     item.querySelector('img').classList.remove('active');
   }
 
-  // 4. Add item to cart
   function addItemToCart(itemElement) {
     const name = itemElement.querySelector('h4').textContent;
     const price = parseFloat(itemElement.querySelector('p').textContent.replace('$', ''));
@@ -87,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCart();
   }
 
-  // 5. Update cart UI
   function updateCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     cartItemsContainer.innerHTML = '';
@@ -117,18 +114,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('order-total').textContent = `$${cart.total.toFixed(2)}`;
 
-    // Add remove buttons
+    // Update remove buttons
     document.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function() {
         const itemName = this.getAttribute('data-name');
         cart.items = cart.items.filter(item => item.name !== itemName);
         updateCart();
       });
     });
+
+    // Enable/disable confirm button based on cart items
+    confirmBtn.disabled = cart.items.length === 0;
   }
 
-  // 6. Show confirmation modal
+  // 4. Confirm Order Button
+  confirmBtn.addEventListener('click', showConfirmationModal);
+
   function showConfirmationModal() {
+    if (cart.items.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    
     confirmationItems.innerHTML = '';
     let calculatedTotal = 0;
   
@@ -154,7 +161,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.add('no-scroll');
   }
 
-  // 7. Close modal
+  // 5. New Order Button
+  newOrderBtn.addEventListener('click', function() {
+    closeConfirmationModal();
+    
+    // Reset cart
+    cart.items = [];
+    cart.total = 0;
+    updateCart();
+    
+    // Reset all item controls
+    document.querySelectorAll('.item').forEach(item => {
+      resetControls(item);
+    });
+  });
+
   function closeConfirmationModal() {
     confirmationModal.classList.remove('active');
     setTimeout(() => {
@@ -163,35 +184,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 300);
   }
 
-  // 8. Confirm order
-  document.querySelector('.confirm-btn').addEventListener('click', function () {
-    if (cart.items.length === 0) {
-      alert('Your cart is empty!');
-      return;
-    }
-    showConfirmationModal();
-  });
-
-  // 9. New Order logic
-  newOrderBtn.addEventListener('click', function () {
-    closeConfirmationModal();
-    cart.items = [];
-    cart.total = 0;
-    updateCart();
-
-    // Reset all UI item states
-    document.querySelectorAll('.item').forEach(item => {
-      resetControls(item);
-    });
-  });
-
-  // 10. Close confirmation modal
-  closeConfirmation.addEventListener('click', closeConfirmationModal);
-
-  // 11. Dismiss modal on outside click
-  confirmationModal.addEventListener('click', function (e) {
+  // 6. Close modal when clicking outside
+  confirmationModal.addEventListener('click', function(e) {
     if (e.target === confirmationModal) {
       closeConfirmationModal();
     }
   });
+
+  // Initialize cart
+  updateCart();
 });
