@@ -2,28 +2,43 @@ body {
   font-family: Arial, sans-serif;
   background-color: #fff8f5;
   margin: 0;
-  padding: 8px;
-  display: flex;
-  justify-content: space-between;
+  padding: 0;
 }
 
-/* LAYOUT STRUCTURE 
-  */
+.container {
+  padding: 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px 0;
+}
+
+.left__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header h1 {
+  font-weight: 900;
+}
+
+/* LAYOUT STRUCTURE */
 .menu {
   max-width: 100%;
   align-content: center;
   align-items: center;
   margin-left: 15%;
 }
+
 .menu h2 {
-  /* font-size: 2rem; */
+  font-size: 1.8rem;
   margin-left: 25px;
   font-weight: 900;
   margin-bottom: 2rem;
   padding-bottom: 0.2rem;
-  /* or any color that matches your theme */
 }
-
 
 .items {
   display: grid;
@@ -31,8 +46,7 @@ body {
   gap: 20px;
 }
 
-/* ITEM COMPONENTS 
-  */
+/* ITEM COMPONENTS */
 .item {
   position: relative;
 }
@@ -42,7 +56,7 @@ body {
   height: 220px;
   object-fit: cover;
   border: 2px solid transparent;
-  border-radius: 18px;  
+  border-radius: 18px;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -51,16 +65,14 @@ body {
   font-size: 15px;
   color: #777;
   font-weight: 100;
-  margin-top: 25px; /* Increased top margin */
+  margin-top: 25px;
   margin-bottom: -18px;
   padding: 0 10px;
   display: flex;
   justify-content: flex-start;
 }
 
-
-
-/* BUTTON STYLES  */
+/* BUTTON STYLES */
 .btn-con {
   display: flex;
   justify-content: center;
@@ -92,9 +104,7 @@ body {
   width: 15px;
 }
 
-/* 
-   QUANTITY CONTROLS 
-    */
+/* QUANTITY CONTROLS */
 .pre-cart-controls {
   position: absolute;
   bottom: 95px;
@@ -113,8 +123,8 @@ body {
 
 .pre-cart-controls:not(.hidden),
 .item:hover .pre-cart-controls:not(.hidden),
-.item img.active ~ .pre-cart-controls,
-.add-btn.active ~ .pre-cart-controls {
+.item img.active~.pre-cart-controls,
+.add-btn.active~.pre-cart-controls {
   display: flex !important;
   opacity: 1 !important;
 }
@@ -158,9 +168,7 @@ body {
   color: #333;
 }
 
-/* 
-   ACTIVE/HIGHLIGHT STATES 
-    */
+/* ACTIVE/HIGHLIGHT STATES */
 .item img.active {
   border: 3px solid #d64500;
   box-shadow: 0 0 15px rgba(214, 69, 0, 0.3);
@@ -188,18 +196,15 @@ body {
   transform: scale(1.05);
 }
 
-/* 
-   CART STYLES 
-  */
+/* CART STYLES */
 .cart {
   background: #fff;
   padding: 20px;
   border-radius: 12px;
   width: 385px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-right: 400px;
-  margin-top: 95px;
-  height: 20%;
+  height: auto;
+  min-height: 20%;
 }
 
 .cart h3 {
@@ -212,7 +217,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-  padding: 8px;
+  padding: 12px 0;
   border-bottom: 1px solid #eee;
 }
 
@@ -251,6 +256,8 @@ body {
   font-weight: bold;
   min-width: 60px;
   text-align: right;
+  display: flex;
+  align-items: center;
 }
 
 .confirm-btn {
@@ -292,7 +299,6 @@ body {
 }
 
 .info p {
-  
   margin: 2px 0 0;
   font-weight: bold;
   color: #d64500;
@@ -301,13 +307,12 @@ body {
 .total {
   display: flex;
   justify-content: space-between;
-  margin: 20px ;
+  margin: 20px;
   font-weight: bold;
   font-size: 16px;
 }
 
 /* Confirmation Modal Styles */
-/* Updated Confirmation Modal Styles */
 .confirmation-modal {
   position: fixed;
   top: 0;
@@ -340,6 +345,18 @@ body {
   animation: modalFadeIn 0.3s ease;
 }
 
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .confirmation-header {
   padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   text-align: center;
@@ -348,21 +365,21 @@ body {
 
 .confirmation-header h1 {
   color: black;
-  margin-left: -170px;
-  /* margin: 0 0 0.5rem 0; */
+  margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
 }
 
 .confirmation-header p {
   color: #777;
   display: flex;
-  font-weight: 300; /* Changed from 10 (invalid value) to 400 (normal) */
-  font-size: 0.7rem; /* Reduced font size */
+  font-weight: 300;
+  font-size: 0.7rem;
   font-style: italic;
-  justify-content: center; /* Center align text */
-  margin-left: -210px; /* Adjust spacing */
+  justify-content: center;
+  margin: 0;
 }
-/* Updated Confirmation Modal with Images */
+
+/* Confirmation Modal with Images */
 .confirmation-item {
   display: flex;
   align-items: center;
@@ -399,6 +416,7 @@ body {
   font-size: 0.95rem;
   margin-left: 12px;
 }
+
 .confirmation-body {
   padding: 0 1.5rem 1rem 1.5rem;
   text-align: left;
@@ -412,27 +430,6 @@ body {
 
 #confirmation-items {
   margin-bottom: 1rem;
-}
-
-.confirmation-item {
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #eee;
-}
-
-.confirmation-item-name {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-}
-
-.confirmation-item-quantity {
-  color: #777;
-  font-size: 0.9rem;
-}
-
-.confirmation-item-price {
-  float: right;
-  font-weight: bold;
 }
 
 .order-total-section {
@@ -477,6 +474,7 @@ body {
 .close-confirmation {
   display: none;
 }
+
 /* Simplified Remove Item Button */
 .remove-item {
   background: none;
@@ -495,176 +493,155 @@ body {
   color: #981405;
 }
 
-/* Add this to your existing cart-item styles */
-.cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.item-total {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-}
-/* ======================
-   RESPONSIVE STYLES 
-   ====================== */
-   @media (max-width: 768px) {
-    body {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      background-color: white;
-    }
-  
-  
-    .menu {
-      margin: 0;
-      margin-left: -90px;
-      padding: 0;
-      width: 100%;
-      justify-content: flex-start;
-    }
-    .menu h2 {
-      font-size: 1.5rem;
-      text-align: center;
-      margin: 16px auto;
-      margin-left: -240px;
-      padding-bottom: 0.5rem;
-    }
-    
-  
-    .items {
-      grid-template-columns: 1fr;
-      gap: 0;
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-  
-    .item {
-      padding: 16px 0;
-      border-bottom: 1px solid #eee;
-      margin: 0;
-    }
-  
-    .item img {
-      height: 250px;
-      border-radius: 18px;
-    }
-  
-    .category-title {
-      margin: 35px 0 2px;
-      font-size: 14px;
-      padding: 0;
-    }
-  
-    .info {
-      padding: 8px 0;
-    }
-  
-    .info h4 {
-      font-size: 1rem;
-      margin: -6px 0 4px;
-    }
-  
-    .info p {
-      font-size: 0.9rem;
-    }
-  
-    .pre-cart-controls {
-      bottom: 110px;
-      right: 140px;
-    }
-  
-    .cart {
-      width: 100%;
-      max-width: 400px;
-      margin: 20px auto;
-      border-radius: 0;
-      box-shadow: none;
-      padding: 16px;
-      position: relative;
-      height: auto;
-      border-top: 1px solid #eee;
-    }
-  
-    .cart h3 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-  
-    .cart-item {
-      padding: 8px 0;
-    }
-  
-    .total {
-      margin: 16px 0;
-      font-size: 14px;
-    }
-  
-    /* Confirmation Modal Mobile Styles */
-    .confirmation-modal {
-      align-items: flex-start;
-      padding-top: 16px;
-    }
-  
-    .confirmation-content {
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
-      max-height: 80vh;
-      position: relative;
-    }
-  
-    .confirmation-header {
-      padding: 16px;
-      text-align: center;
-    }
-  
-    .confirmation-header h1 {
-      font-size: 1.3rem;
-      margin: 0;
-    }
-  
-    .confirmation-header p {
-      font-size: 0.8rem;
-      margin: 4px 0 0;
-    }
-  
-    .confirmation-body {
-      padding: 0 16px 16px;
-    }
-  
-    .confirmation-item-img {
-      width: 36px;
-      height: 36px;
-    }
-  
-    .confirmation-item-name {
-      font-size: 0.9rem;
-    }
-  
-    .confirmation-item-quantity {
-      font-size: 0.8rem;
-    }
-  
-    .confirmation-item-price {
-      font-size: 0.9rem;
-    }
-  
-    .order-total-section h3 {
-      font-size: 0.95rem;
-    }
-  
-    .order-total-section strong {
-      font-size: 1rem;
-    }
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: white;
   }
-  
+
+  .menu {
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .menu h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 16px auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .items {
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .item {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+  }
+
+  .item img {
+    height: 250px;
+    border-radius: 18px;
+  }
+
+  .category-title {
+    margin: 35px 0 2px;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .info {
+    padding: 8px 0;
+  }
+
+  .info h4 {
+    font-size: 1rem;
+    margin: -6px 0 4px;
+  }
+
+  .info p {
+    font-size: 0.9rem;
+  }
+
+  .pre-cart-controls {
+    bottom: 110px;
+    right: 20px;
+  }
+
+  .cart {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px;
+    position: relative;
+    height: auto;
+    border-top: 1px solid #eee;
+  }
+
+  .cart h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .cart-item {
+    padding: 8px 0;
+  }
+
+  .total {
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  /* Confirmation Modal Mobile Styles */
+  .confirmation-modal {
+    align-items: flex-start;
+    padding-top: 16px;
+  }
+
+  .confirmation-content {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    max-height: 80vh;
+    position: relative;
+  }
+
+  .confirmation-header {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .confirmation-header h1 {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .confirmation-header p {
+    font-size: 0.8rem;
+    margin: 4px 0 0;
+  }
+
+  .confirmation-body {
+    padding: 0 16px 16px;
+  }
+
+  .confirmation-item-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .confirmation-item-name {
+    font-size: 0.9rem;
+  }
+
+  .confirmation-item-quantity {
+    font-size: 0.8rem;
+  }
+
+  .confirmation-item-price {
+    font-size: 0.9rem;
+  }
+
+  .order-total-section h3 {
+    font-size: 0.95rem;
+  }
+
+  .order-total-section strong {
+    font-size: 1rem;
+  }
+}

@@ -1,275 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desserts Menu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
- 
-  <div class="menu">
-    <div class="menu-header">
-      <h2>Desserts</h2>
-    </div>
-    <div class="items">
-      <div class="item">
-        <img src="assets/images/image-waffle-desktop.jpg" alt="Waffle with Berries" />
-        
-        <!-- Add this quantity controls div -->
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Contents -->
+    <div class="content">
+      <!-- Items -->
+      <div class="left__content">
+        <!-- Heading -->
+        <div class="header">
+          <h1>Desserts</h2>
         </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-        
-        <div class="category-title">Waffle</div>
-        <div class="info">
-          <h4>Waffle with Berries</h4>
-          <p>$6.50</p>
+        <div class="items" id="cards-container">
+          <!-- Dynamic Cards -->
         </div>
       </div>
-
-
-      <div class="item">
-        
-        <img src="assets/images/image-creme-brulee-desktop.jpg" alt="Crème Brûlée" />
-
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
+      <!-- Cart -->
+      <div class="right__content">
+        <div class="cart">
+          <h3>Your Cart</h3>
+          <div id="cart-items" class="cart-items-container">
+            <!-- Cart items will be inserted here dynamically -->
+          </div>
+          <div class="total">
+            <p>Order Total</p>
+            <strong id="order-total">$0.00</strong>
+          </div>
+          <div class="eco">
+            <img src="assets/images/icon-carbon-neutral.svg" alt="eco" />
+            <small>This is a <b>carbon-neutral</b> delivery</small>
+          </div>
+          <button class="confirm-btn">Confirm Order</button>
         </div>
-        
-
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Crème Brûlée</div>
-        <div class="info">
-          <h4>Vanilla Bean Crème Brûlée</h4>
-          <p>$7.00</p>
-         
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="assets/images/image-macaron-desktop.jpg" alt="Macarons" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-
-        <div class="category-title">Macaron</div>
-        <div class="info">
-          <h4>Macaron Mix of Five</h4>
-          <p>$8.00</p>
-          
-        </div>
-      </div>
-
-      <div class="item">
-        <!-- <span class="cart-count"></span> -->
-        <img src="assets/images/image-tiramisu-desktop.jpg" alt="Tiramisu" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Tiramisu</div>
-        <div class="info">
-          <h4>Classic Tiramisu</h4>
-          <p>$5.50</p>
-          
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="assets/images/image-baklava-desktop.jpg" alt="Baklava" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Baklava</div>
-        <div class="info">
-          <h4>Pistachio Baklava</h4>
-          <p>$4.00</p>
-          
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="assets/images/image-meringue-desktop.jpg" alt="Pie" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-
-        <div class="category-title">Pie</div>
-        <div class="info">
-          <h4>Lemon Meringue Pie</h4>
-          <p>$5.00</p>
-          
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/image-cake-desktop.jpg" alt="Red Velvet Cake" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Cake</div>
-        <div class="info">
-          <h4>Red Velvet Cake</h4>
-          <p>$5.00</p>
-          
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="assets/images/image-brownie-desktop.jpg" alt="Chocolate Cake" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Chocolate</div>
-        <div class="info">
-          <h4>Chocolate Cake</h4>
-          <p>$5.50</p>
-          
-        </div>
-      </div>
-
-      <div class="item">
-        
-        <img src="assets/images/image-panna-cotta-desktop.jpg" alt="Panna Cotta" />
-        <div class="pre-cart-controls hidden">
-          <button class="quantity-btn decrease">-</button>
-          <span class="quantity">1</span>
-          <button class="quantity-btn increase">+</button>
-        </div>
-        
-        <div class="btn-con">
-          <button class="add-btn">
-            <img src="assets/images/icon-add-to-cart.svg" alt="cart icon" class="cart-cons">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="category-title">Panna Cotta</div> <!-- Move it here -->
-        <div class="info">
-          <h4>Vanilla Panna Cotta</h4>
-          <p>$6.50</p>
-        </div>
-        
       </div>
     </div>
   </div>
 
-  <div class="cart">
-  <h3>Your Cart</h3>
-  <div id="cart-items" class="cart-items-container">
-    <!-- Cart items will be inserted here by JavaScript -->
-  </div>
-  <div class="total">
-    <p>Order Total</p>
-    <strong id="order-total">$0.00</strong>
-  </div>
-  <div class="eco">
-    <img src="assets/images/icon-carbon-neutral.svg" alt="eco" />
-    <small>This is a <b>carbon-neutral</b> delivery</small>
-  </div>
-  <button class="confirm-btn">Confirm Order</button>
-</div>
-
-
-<!-- Order Confirmation Modal -->
-<div class="confirmation-modal hidden">
-  <div class="confirmation-content">
-    <div class="confirmation-header">
-      <h1>Order Confirmed</h1>
-      <p>We hope you enjoy your food</p>
-    </div>
-    <div class="confirmation-body">
-      <h3>Your Order</h3>
-      <div id="confirmation-items"></div>
-      <div class="order-total-section">
-        <h3>Order Total</h3>
-        <strong id="confirmation-total">$0.00</strong>
+  <!-- Order Confirmation Modal START -->
+  <div class="confirmation-modal hidden">
+    <div class="confirmation-content">
+      <div class="confirmation-header">
+        <h1>Order Confirmed</h1>
+        <p>We hope you enjoy your food</p>
+      </div>
+      <div class="confirmation-body">
+        <h3>Your Order</h3>
+        <div id="confirmation-items"></div>
+        <div class="order-total-section">
+          <h3>Order Total</h3>
+          <strong id="confirmation-total">$0.00</strong>
+        </div>
+      </div>
+      <div class="confirmation-footer">
+        <button class="new-order-btn">Start New Order</button>
       </div>
     </div>
-    <div class="confirmation-footer">
-      <button class="new-order-btn">Start New Order</button>
-    </div>
   </div>
-</div>
+  <!-- Order Confirmation Modal END -->
 
+  <script src="script.js"></script>
 
-<script src="script.js"></script>
 </body>
+
 </html>
