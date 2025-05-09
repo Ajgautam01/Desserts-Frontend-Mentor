@@ -503,11 +503,18 @@ body {
     background-color: white;
   }
 
+  .content {
+    flex-direction: column;
+    padding: 20px 0 0 0;
+  }
+
   .menu {
     margin: 0 auto;
     padding: 0 16px;
     width: 100%;
     max-width: 400px;
+    order: 1;
+    /* Ensure menu comes first */
   }
 
   .menu h2 {
@@ -524,6 +531,8 @@ body {
     max-width: 400px;
     margin: 0 auto;
     padding: 0 16px;
+    order: 2;
+    /* Items come after menu */
   }
 
   .item {
@@ -557,20 +566,24 @@ body {
   }
 
   .pre-cart-controls {
-    bottom: 110px;
-    right: 20px;
+    bottom: 115px;
+    right: 140px;
   }
 
   .cart {
     width: 100%;
     max-width: 400px;
-    margin: 20px auto;
+    margin: 0 auto;
     border-radius: 0;
     box-shadow: none;
     padding: 16px;
-    position: relative;
-    height: auto;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    z-index: 100;
     border-top: 1px solid #eee;
+    order: 3;
+    /* Cart comes last */
   }
 
   .cart h3 {
