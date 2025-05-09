@@ -1,5 +1,7 @@
 # Frontend Mentor - Product list with cart
 
+🔗 **Live Demo:** [View it here](https://ajgautam01.github.io/Desserts-Frontend-Mentor/)
+
 ![Design preview for the Product list with cart coding challenge](./preview.jpg)
 
 ## Welcome! 👋
